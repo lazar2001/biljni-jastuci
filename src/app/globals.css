@@ -1,0 +1,271 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ */
+/* Brand tokens                                                        */
+/* ------------------------------------------------------------------ */
+:root {
+  --linen: #ede8e0;
+  --paper: #f7f4ef;
+  --stone: #a39e96;
+  --sage: #7d8b74;
+  --eucalyptus: #4f6b5e;
+  --charcoal: #2b2a27;
+  --citrus: #d9a441;
+  --sea: #6f8fa0;
+
+  /* Derived, contrast-safe text tones (WCAG AA on linen and paper) */
+  --muted: #5e5a54;
+  --line: color-mix(in srgb, var(--stone) 40%, transparent);
+
+  /* Active scent accent, swapped by the scent selector */
+  --accent: var(--sage);
+
+  --ease-calm: cubic-bezier(0.22, 1, 0.36, 1);
+  --header-h: 4.5rem;
+  --site-max: 90rem;
+  --gutter: clamp(1.25rem, 0.6rem + 3vw, 3.5rem);
+  /* Left offset that aligns full-bleed layouts with .container-site content */
+  --site-inset: max(var(--gutter), calc((100vw - var(--site-max)) / 2 + var(--gutter)));
+}
+
+@theme inline {
+  --color-linen: var(--linen);
+  --color-paper: var(--paper);
+  --color-stone: var(--stone);
+  --color-sage: var(--sage);
+  --color-eucalyptus: var(--eucalyptus);
+  --color-charcoal: var(--charcoal);
+  --color-citrus: var(--citrus);
+  --color-sea: var(--sea);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+
+  --font-serif: var(--font-fraunces), "Georgia", serif;
+  --font-sans: var(--font-manrope), system-ui, sans-serif;
+
+  --ease-calm: var(--ease-calm);
+
+  --radius-soft: 10px;
+  --radius-card: 14px;
+
+  /* Fluid type scale (375px -> 1440px) */
+  --text-display: clamp(2.5rem, 1.6rem + 4.5vw, 6rem);
+  --text-display--line-height: 1.02;
+  --text-display--letter-spacing: -0.02em;
+  --text-h2: clamp(2rem, 1.45rem + 2.4vw, 3.75rem);
+  --text-h2--line-height: 1.08;
+  --text-h2--letter-spacing: -0.015em;
+  --text-h3: clamp(1.375rem, 1.2rem + 0.8vw, 1.875rem);
+  --text-h3--line-height: 1.2;
+  --text-lead: clamp(1.0625rem, 1rem + 0.35vw, 1.3125rem);
+  --text-lead--line-height: 1.6;
+  --text-eyebrow: 0.75rem;
+  --text-eyebrow--letter-spacing: 0.18em;
+}
+
+/* ------------------------------------------------------------------ */
+/* Base                                                                */
+/* ------------------------------------------------------------------ */
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: var(--header-h);
+  }
+
+  body {
+    background: var(--linen);
+    color: var(--charcoal);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-optical-sizing: auto;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  em {
+    font-style: italic;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--sage) 35%, transparent);
+    color: var(--charcoal);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--eucalyptus);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* Lenis */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html:not(.lenis) {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Hero text: CSS animations start on first paint without waiting for JS.
+   Only transforms move, so the text is painted immediately (good for LCP). */
+@keyframes mask-rise {
+  from {
+    transform: translateY(105%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes soft-rise {
+  from {
+    transform: translateY(14px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.hero-line {
+  animation: mask-rise 1.1s var(--ease-calm) both;
+  animation-delay: calc(0.1s + var(--i, 0) * 0.12s);
+}
+
+.hero-rise {
+  animation: soft-rise 1s var(--ease-calm) both;
+  animation-delay: var(--d, 0.4s);
+}
+
+/* Hero photo slowly "breathes" (scale 1 -> 1.03) */
+@keyframes breathe {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.03);
+  }
+}
+
+.hero-breathe {
+  animation: breathe 9s cubic-bezier(0.45, 0, 0.55, 1) infinite alternate;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-breathe {
+    animation: none;
+  }
+  /* Reduced motion: fade only, no movement */
+  .hero-line,
+  .hero-rise {
+    animation: fade-in 0.6s ease both !important;
+    animation-delay: 0s !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Utilities                                                           */
+/* ------------------------------------------------------------------ */
+@utility container-site {
+  width: 100%;
+  max-width: var(--site-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+@utility pl-site {
+  padding-left: var(--site-inset);
+}
+
+@utility pr-site {
+  padding-right: var(--site-inset);
+}
+
+/* Horizontal rails (gallery, reviews): snap, hidden scrollbar, aligned to the grid */
+@utility rail {
+  display: flex;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--site-inset);
+  padding-inline: var(--site-inset);
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@utility section-y {
+  padding-block: clamp(5rem, 3.5rem + 6vw, 10rem);
+}
+
+@utility measure {
+  max-width: 65ch;
+}
+
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--text-eyebrow);
+  letter-spacing: var(--text-eyebrow--letter-spacing);
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+@utility hairline {
+  border-color: var(--line);
+}
+
+@utility tap {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+/* Focus ring stays visible (>= 3:1) on dark sections */
+.bg-charcoal :focus-visible,
+.bg-eucalyptus :focus-visible {
+  outline-color: var(--paper);
+}

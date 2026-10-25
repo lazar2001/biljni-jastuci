@@ -1,11 +1,12 @@
+
 @import "tailwindcss";
 
 /* ------------------------------------------------------------------ */
 /* Brand tokens                                                        */
 /* ------------------------------------------------------------------ */
 :root {
-  --linen: #ede8e0;
-  --paper: #f7f4ef;
+  --linen: #ffffff;
+  --paper: #ffffff;
   --stone: #a39e96;
   --sage: #7d8b74;
   --eucalyptus: #4f6b5e;
@@ -13,7 +14,7 @@
   --citrus: #d9a441;
   --sea: #6f8fa0;
 
-  /* Derived, contrast-safe text tones (WCAG AA on linen and paper) */
+  /* Derived, contrast-safe text tones */
   --muted: #5e5a54;
   --line: color-mix(in srgb, var(--stone) 40%, transparent);
 
@@ -24,8 +25,12 @@
   --header-h: 4.5rem;
   --site-max: 90rem;
   --gutter: clamp(1.25rem, 0.6rem + 3vw, 3.5rem);
+
   /* Left offset that aligns full-bleed layouts with .container-site content */
-  --site-inset: max(var(--gutter), calc((100vw - var(--site-max)) / 2 + var(--gutter)));
+  --site-inset: max(
+    var(--gutter),
+    calc((100vw - var(--site-max)) / 2 + var(--gutter))
+  );
 }
 
 @theme inline {
@@ -41,7 +46,8 @@
   --color-line: var(--line);
   --color-accent: var(--accent);
 
-  --font-serif: var(--font-fraunces), "Georgia", serif;
+  /* Typography */
+  --font-serif: var(--font-cormorant), "Georgia", serif;
   --font-sans: var(--font-manrope), system-ui, sans-serif;
 
   --ease-calm: var(--ease-calm);
@@ -71,12 +77,13 @@
   html {
     -webkit-text-size-adjust: 100%;
     scroll-padding-top: var(--header-h);
+    background: #ffffff;
   }
 
   body {
-    background: var(--linen);
+    background: #ffffff;
     color: var(--charcoal);
-    font-family: var(--font-sans);
+    font-family: "Manrope", sans-serif;
     font-size: 1rem;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
@@ -86,11 +93,16 @@
 
   h1,
   h2,
-  h3,
-  h4 {
-    font-family: var(--font-serif);
+  h3 {
+    font-family: "Cormorant Garamond", serif;
     font-weight: 400;
     font-optical-sizing: auto;
+    text-wrap: balance;
+  }
+
+  h4 {
+    font-family: "Manrope", sans-serif;
+    font-weight: 400;
     text-wrap: balance;
   }
 
@@ -118,9 +130,11 @@
   html.lenis body {
     height: auto;
   }
+
   .lenis.lenis-smooth {
     scroll-behavior: auto !important;
   }
+
   .lenis.lenis-stopped {
     overflow: hidden;
   }
@@ -132,12 +146,12 @@
   }
 }
 
-/* Hero text: CSS animations start on first paint without waiting for JS.
-   Only transforms move, so the text is painted immediately (good for LCP). */
+/* Hero animations */
 @keyframes mask-rise {
   from {
     transform: translateY(105%);
   }
+
   to {
     transform: translateY(0);
   }
@@ -147,6 +161,7 @@
   from {
     transform: translateY(14px);
   }
+
   to {
     transform: translateY(0);
   }
@@ -156,6 +171,7 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -171,11 +187,12 @@
   animation-delay: var(--d, 0.4s);
 }
 
-/* Hero photo slowly "breathes" (scale 1 -> 1.03) */
+/* Hero photo breathing animation */
 @keyframes breathe {
   from {
     transform: scale(1);
   }
+
   to {
     transform: scale(1.03);
   }
@@ -190,7 +207,7 @@
   .hero-breathe {
     animation: none;
   }
-  /* Reduced motion: fade only, no movement */
+
   .hero-line,
   .hero-rise {
     animation: fade-in 0.6s ease both !important;
@@ -224,7 +241,7 @@
   padding-right: var(--site-inset);
 }
 
-/* Horizontal rails (gallery, reviews): snap, hidden scrollbar, aligned to the grid */
+/* Horizontal rails */
 @utility rail {
   display: flex;
   overflow-x: auto;
@@ -233,6 +250,7 @@
   scroll-padding-inline: var(--site-inset);
   padding-inline: var(--site-inset);
   scrollbar-width: none;
+
   &::-webkit-scrollbar {
     display: none;
   }
@@ -264,7 +282,7 @@
   min-height: 44px;
 }
 
-/* Focus ring stays visible (>= 3:1) on dark sections */
+/* Focus ring on dark sections */
 .bg-charcoal :focus-visible,
 .bg-eucalyptus :focus-visible {
   outline-color: var(--paper);

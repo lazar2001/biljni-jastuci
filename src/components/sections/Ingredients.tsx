@@ -6,10 +6,15 @@ import { ScrollRail } from "@/components/ui/ScrollRail";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Text } from "@/components/ui/Text";
 import { fallVariants } from "@/lib/motion";
+import Image from "next/image";
 
 export function Ingredients() {
   return (
-    <section id="sastav" aria-labelledby="ingredients-title" className="section-y overflow-hidden bg-paper">
+    <section
+      id="sastav"
+      aria-labelledby="ingredients-title"
+      className="section-y overflow-hidden bg-paper"
+    >
       <div className="container-site">
         <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
           <SectionHeading
@@ -18,24 +23,46 @@ export function Ingredients() {
             title={ingredients.title}
             className="lg:col-span-7"
           />
-          <p className="measure text-lead text-muted lg:col-span-4 lg:col-start-9">{ingredients.intro}</p>
+          <p className="measure text-lead text-muted lg:col-span-4 lg:col-start-9">
+            {ingredients.intro}
+          </p>
         </div>
       </div>
 
       {/* Herbarium sheets in a horizontal strip — swipe or use the arrows */}
       <div className="mt-12 lg:mt-16">
         <ScrollRail label="Biljke u jastuku">
-          <Stagger as="ul" stagger={0.12} amount={0.01} className="flex gap-5 lg:gap-6">
+          <Stagger
+            as="ul"
+            stagger={0.12}
+            amount={0.01}
+            className="flex gap-5 lg:gap-6"
+          >
             {ingredients.items.map((item, i) => (
-              <StaggerItem as="li" key={i} className="w-[72vw] shrink-0 snap-start sm:w-[19rem]">
+              <StaggerItem
+                as="li"
+                key={i}
+                className="w-[72vw] shrink-0 snap-start sm:w-[19rem]"
+              >
                 <figure>
                   <div className="relative aspect-[4/5] overflow-hidden rounded-card border border-line bg-linen">
                     {item.image ? (
-                      <Photo src={item.image} alt={item.name} sizes="(min-width: 640px) 19rem, 72vw" />
+                      <Image
+                        src={item.image!}
+                        alt={item.name}
+                        width={400}
+                        height={300}
+                      />
                     ) : (
                       // Each plant drops softly into its sheet, one after another
-                      <StaggerItem variants={fallVariants} className="absolute inset-0 flex items-center justify-center">
-                        <HerbSpecimen variant={i} className="h-[70%] text-eucalyptus/70" />
+                      <StaggerItem
+                        variants={fallVariants}
+                        className="absolute inset-0 flex items-center justify-center"
+                      >
+                        <HerbSpecimen
+                          variant={i}
+                          className="h-[70%] text-eucalyptus/70"
+                        />
                       </StaggerItem>
                     )}
                     <span className="absolute left-4 top-4 font-sans text-xs tracking-[0.16em] text-muted">

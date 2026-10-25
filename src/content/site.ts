@@ -1,17 +1,4 @@
-/**
- * Single source of truth for all site content.
- *
- * Edit texts, prices, scents, sizes, FAQ and contact data here — components
- * only read from this file.
- *
- * Placeholder convention:
- *   - Unknown strings use fill("…"), which renders as "[POPUNITI: …]".
- *     In development these are highlighted on the page; search the project
- *     for "fill(" to find everything that still needs real data.
- *   - Unknown numbers (prices, shipping) are `null`. A size without a price
- *     cannot be added to the cart and shows "Cena uskoro" instead.
- */
-
+import { ingredients as ings } from "./ingredients";
 export const PLACEHOLDER_PREFIX = "[POPUNITI";
 export const fill = (what: string) => `[POPUNITI: ${what}]`;
 export const isPlaceholder = (value: unknown): boolean =>
@@ -165,11 +152,7 @@ export const ingredients = {
   title: "Mali *herbarijum* u svakom jastuku.",
   intro: "Punimo ručno, biljku po biljku. Ovo je ono što se nalazi unutra.",
   /** Up to 14 plants, shown in a horizontally scrollable herbarium. Add `image` for a photo. */
-  items: Array.from({ length: 14 }, (_, i): Ingredient => ({
-    name: fill(`naziv biljke ${i + 1}`),
-    latin: fill("latinski naziv"),
-    note: fill("jedna rečenica o mirisu"),
-  })),
+  items: ings,
   fabricNote: fill("materijal jastučnice, npr. 100% laneno platno"),
 };
 

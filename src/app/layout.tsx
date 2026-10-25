@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Manrope } from "next/font/google";
 import { brand } from "@/content/site";
 import { GrainOverlay } from "@/components/layout/GrainOverlay";
 import { Header } from "@/components/layout/Header";
@@ -10,6 +9,7 @@ import { MobileCTA } from "@/components/layout/MobileCTA";
 import { MotionProvider } from "@/components/layout/MotionProvider";
 import { CookieConsent } from "@/components/layout/CookieConsent";
 import { CartDrawer } from "@/components/cart/CartDrawer";
+import { Fraunces,Manrope, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -28,6 +28,13 @@ const fraunces = Fraunces({
 const manrope = Manrope({
   subsets: ["latin", "latin-ext"],
   variable: "--font-manrope",
+  display: "swap",
+});
+
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin", "latin-ext"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-cormorant",
   display: "swap",
 });
 
@@ -62,7 +69,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="sr-Latn" className={`${fraunces.variable} ${manrope.variable}`}>
+    <html lang="sr-Latn" className={`${fraunces.variable} ${manrope.variable} ${cormorant.variable}` }>
       <body>
         <a
           href="#sadrzaj"

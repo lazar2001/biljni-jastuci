@@ -81,7 +81,7 @@ export type GalleryImage = { src: string; alt: string; tone: string };
 /* ------------------------------------------------------------------ */
 
 export const brand = {
-  name: "[IME BRENDA]",
+  name: "Biljni Jastuci",
   tagline: "Ručno punjeni biljni jastuci sa prirodnim mirisnim notama.",
   footerNote:
     "Šijemo i punimo svaki jastuk ručno, od sušenog bilja i lanenog platna, za tiši i mirisniji dom.",

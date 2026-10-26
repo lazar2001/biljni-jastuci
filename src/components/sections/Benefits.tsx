@@ -20,7 +20,7 @@ export function Benefits() {
           {benefits.items.map((item, i) => (
             <StaggerItem as="li" key={item.title} className="grid grid-cols-[3.5rem_1fr] border-b border-line py-9 md:py-12">
               <span aria-hidden="true" className="pt-1.5 text-sm font-semibold tracking-[0.12em] text-muted">
-                {String(i + 1).padStart(2, "0")}
+                {/* {String(i + 1).padStart(2, "0")} */}
               </span>
               <div>
                 <h3 className="text-h3">{item.title}</h3>

@@ -44,7 +44,7 @@ export function Ingredients() {
                 key={i}
                 className="w-[72vw] shrink-0 snap-start sm:w-[19rem]"
               >
-                <figure>
+                <figure className="group relative transition-transform duration-300 ease-out hover:z-10 hover:scale-[1.06]">
                   <div className="relative aspect-[4/5] overflow-hidden rounded-card border border-line bg-linen">
                     {item.image ? (
                       <Image
@@ -52,6 +52,7 @@ export function Ingredients() {
                         alt={item.name}
                         width={400}
                         height={300}
+                        className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                       />
                     ) : (
                       // Each plant drops softly into its sheet, one after another
@@ -65,9 +66,6 @@ export function Ingredients() {
                         />
                       </StaggerItem>
                     )}
-                    <span className="absolute left-4 top-4 font-sans text-xs tracking-[0.16em] text-muted">
-                      No. {String(i + 1).padStart(2, "0")}
-                    </span>
                   </div>
                   <figcaption className="mt-5 border-t border-line pt-5">
                     <h3 className="text-h3">

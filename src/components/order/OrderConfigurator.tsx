@@ -90,7 +90,7 @@ export function OrderConfigurator() {
       {/* 1. Scent */}
       <fieldset>
         <legend className={stepLabel}>
-          <span className={stepNum}>01</span> Mirisna nota: <span className="font-normal">{scent.name}</span>
+            Mirisna nota: <span className="font-normal">{scent.name}</span>
         </legend>
         <div className="mt-4 flex flex-wrap gap-2">
           {scents.map((s) => (
@@ -142,7 +142,7 @@ export function OrderConfigurator() {
       {/* 2. Size */}
       <fieldset>
         <legend className={stepLabel}>
-          <span className={stepNum}>02</span> Dimenzija
+         Dimenzija
         </legend>
         <div className="mt-4 grid gap-2">
           {sizes.map((s) => {
@@ -210,9 +210,7 @@ export function OrderConfigurator() {
       {/* 3. Quantity + live price */}
       <div className="flex flex-wrap items-end justify-between gap-6 border-t border-line pt-8">
         <div>
-          <p className={stepLabel}>
-            <span className={stepNum}>03</span> Količina
-          </p>
+          
           <div className="mt-4">
             <QuantityStepper value={quantity} onChange={setQuantity} />
           </div>
@@ -260,7 +258,7 @@ export function OrderConfigurator() {
           )}
           {!canOrder && (
             <span className="text-muted">
-              Cene uskoro objavljujemo. Do tada poručite telefonom: <Text>{contact.phone}</Text>
+              Cene uskoro objavljujemo. Do tada poručite telefonom: <Text>065 3053662</Text>
               {isPlaceholder(contact.phone) ? "" : "."}
             </span>
           )}

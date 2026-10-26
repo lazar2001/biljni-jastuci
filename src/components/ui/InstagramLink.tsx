@@ -34,10 +34,10 @@ export function InstagramLink({ className }: { className?: string }) {
 
   return (
     <a
-      href={ready ? contact.instagram.url : "/#kontakt"}
+      href="https://www.instagram.com/biljni_jastuci?cplk=bTU5b3lydW1sNHox"
       {...(ready ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       aria-label="Instagram profil (otvara se u novoj kartici)"
-      title={ready ? undefined : "[POPUNITI: Instagram link u site.ts]"}
+      title={ready ? undefined : "https://www.instagram.com/biljni_jastuci?cplk=bTU5b3lydW1sNHox"}
       className={clsx(
         "tap inline-flex items-center justify-center rounded-soft transition-colors duration-500 ease-calm hover:bg-charcoal/[0.05]",
         className,

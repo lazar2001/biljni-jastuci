@@ -1,4 +1,6 @@
 import { ingredients as ings } from "./ingredients";
+import eukaliptus from "../app/assets/eukaliptus.png";
+import vranilovka from "../app/assets/origano.jpg";
 export const PLACEHOLDER_PREFIX = "[POPUNITI";
 export const fill = (what: string) => `[POPUNITI: ${what}]`;
 export const isPlaceholder = (value: unknown): boolean =>
@@ -106,6 +108,13 @@ export const hero = {
     src: "/images/hero/hero.jpg",
     alt: "Laneno sivi pravougaoni biljni jastuk na krevetu, obasjan mekim dnevnim svetlom",
   },
+  images:[{
+    src: "/assets/eukaliptus.png",
+    alt: "Laneno sivi pravougaoni biljni jastuk na krevetu, obasjan mekim dnevnim svetlom",
+  },{
+    src: "/assets/kamilica.jpg",
+    alt: "Laneno sivi pravougaoni biljni jastuk na krevetu, obasjan mekim dnevnim svetlom",
+  }]
 };
 
 /* ------------------------------------------------------------------ */

@@ -1,5 +1,6 @@
 import { create } from "zustand";
-import { defaultScentId, defaultSizeId, quantity, type ScentId, type SizeId } from "@/content/site";
+import { defaultSizeId, quantity,  type SizeId } from "@/content/site";
+import { defaultScentId , type ScentId  } from "@/content/scents";
 
 /**
  * Current product choice, shared by the Scents and Sizes sections,

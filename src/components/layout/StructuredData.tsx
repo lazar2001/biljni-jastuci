@@ -1,4 +1,5 @@
-import { brand, contact, hero, isPlaceholder, scents, seller, sizes } from "@/content/site";
+import { brand, contact, hero, isPlaceholder, seller, sizes } from "@/content/site";
+import { scents } from "@/content/scents";
 import { imageExists } from "@/lib/images";
 
 /**

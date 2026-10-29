@@ -7,15 +7,13 @@ import {
   contact,
   customScent,
   customSize,
-  getScent,
   getSize,
   isPlaceholder,
-  scents,
   sizes,
   sizesSection,
-  type ScentId,
   type SizeId,
 } from "@/content/site";
+import { type ScentId, scents, getScent } from "@/content/scents";
 import { AnimatedPrice } from "@/components/ui/AnimatedPrice";
 import { Button } from "@/components/ui/Button";
 import { QuantityStepper } from "@/components/ui/QuantityStepper";
@@ -35,7 +33,8 @@ const optionBase =
 
 export function OrderConfigurator() {
   const selection = useSelection();
-  const { scentId, sizeId, quantity, setScent, setSize, setQuantity } = selection;
+  const { scentId, sizeId, quantity, setScent, setSize, setQuantity } =
+    selection;
   const add = useCart((s) => s.add);
   const openCart = useUI((s) => s.openCart);
   const [added, setAdded] = useState(false);
@@ -90,7 +89,7 @@ export function OrderConfigurator() {
       {/* 1. Scent */}
       <fieldset>
         <legend className={stepLabel}>
-            Mirisna nota: <span className="font-normal">{scent.name}</span>
+          Mirisna nota: <span className="font-normal">{scent.name}</span>
         </legend>
         <div className="mt-4 flex flex-wrap gap-2">
           {scents.map((s) => (
@@ -99,7 +98,9 @@ export function OrderConfigurator() {
               className={clsx(
                 optionBase,
                 "flex min-h-12 items-center gap-2.5 px-4",
-                s.id === scentId ? "border-charcoal bg-linen" : "border-charcoal/20 hover:border-charcoal/50",
+                s.id === scentId
+                  ? "border-charcoal bg-linen"
+                  : "border-charcoal/20 hover:border-charcoal/50",
               )}
             >
               <input
@@ -111,9 +112,16 @@ export function OrderConfigurator() {
                 className="sr-only"
               />
               {s.custom ? (
-                <span aria-hidden="true" className="size-4 rounded-full border border-dashed border-charcoal/60" />
+                <span
+                  aria-hidden="true"
+                  className="size-4 rounded-full border border-dashed border-charcoal/60"
+                />
               ) : (
-                <span aria-hidden="true" className="size-4 rounded-full" style={{ backgroundColor: s.accent }} />
+                <span
+                  aria-hidden="true"
+                  className="size-4 rounded-full"
+                  style={{ backgroundColor: s.accent }}
+                />
               )}
               {s.name}
             </label>
@@ -132,7 +140,9 @@ export function OrderConfigurator() {
               maxLength={customScent.maxLength}
               placeholder={customScent.placeholder}
               onChange={(e) => selection.setCustomScent(e.target.value)}
-              aria-invalid={showErrors && customError?.includes("notu") ? true : undefined}
+              aria-invalid={
+                showErrors && customError?.includes("notu") ? true : undefined
+              }
               className="mt-2 h-13 min-h-[52px] w-full rounded-soft border border-charcoal/25 bg-paper px-4 text-base outline-none transition-colors duration-300 placeholder:text-charcoal/40 focus:border-charcoal focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-eucalyptus"
             />
           </div>
@@ -141,9 +151,7 @@ export function OrderConfigurator() {
 
       {/* 2. Size */}
       <fieldset>
-        <legend className={stepLabel}>
-         Dimenzija
-        </legend>
+        <legend className={stepLabel}>Dimenzija</legend>
         <div className="mt-4 grid gap-2">
           {sizes.map((s) => {
             const p = unitPrice(s.id);
@@ -154,7 +162,9 @@ export function OrderConfigurator() {
                 className={clsx(
                   optionBase,
                   "flex min-h-14 items-center gap-4 px-4 py-3",
-                  selected ? "border-charcoal bg-linen" : "border-charcoal/20 hover:border-charcoal/50",
+                  selected
+                    ? "border-charcoal bg-linen"
+                    : "border-charcoal/20 hover:border-charcoal/50",
                 )}
               >
                 <input
@@ -169,7 +179,9 @@ export function OrderConfigurator() {
                   aria-hidden="true"
                   className={clsx(
                     "flex size-5 shrink-0 items-center justify-center rounded-full border transition-colors duration-500",
-                    selected ? "border-eucalyptus bg-eucalyptus text-paper" : "border-charcoal/30",
+                    selected
+                      ? "border-eucalyptus bg-eucalyptus text-paper"
+                      : "border-charcoal/30",
                   )}
                 >
                   {selected && <Check strokeWidth={2.5} className="size-3" />}
@@ -192,7 +204,9 @@ export function OrderConfigurator() {
                   ) : p !== null ? (
                     <span className="text-base">{formatRSD(p)}</span>
                   ) : (
-                    <span className="text-muted">{sizesSection.noPriceLabel}</span>
+                    <span className="text-muted">
+                      {sizesSection.noPriceLabel}
+                    </span>
                   )}
                 </span>
               </label>
@@ -210,7 +224,6 @@ export function OrderConfigurator() {
       {/* 3. Quantity + live price */}
       <div className="flex flex-wrap items-end justify-between gap-6 border-t border-line pt-8">
         <div>
-          
           <div className="mt-4">
             <QuantityStepper value={quantity} onChange={setQuantity} />
           </div>
@@ -219,14 +232,19 @@ export function OrderConfigurator() {
           {size.custom ? (
             <>
               <p className="text-sm text-muted">Jastuk po meri</p>
-              <p className="mt-1 font-serif text-[1.75rem] leading-none">{customSize.priceLabel}</p>
+              <p className="mt-1 font-serif text-[1.75rem] leading-none">
+                {customSize.priceLabel}
+              </p>
             </>
           ) : price !== null ? (
             <>
               <p className="text-sm text-muted">
                 {formatRSD(price)} × {quantity}
               </p>
-              <AnimatedPrice value={price * quantity} className="mt-1 block font-serif text-[2.25rem] leading-none" />
+              <AnimatedPrice
+                value={price * quantity}
+                className="mt-1 block font-serif text-[2.25rem] leading-none"
+              />
             </>
           ) : (
             <p className="text-muted">{sizesSection.noPriceLabel}</p>
@@ -237,28 +255,49 @@ export function OrderConfigurator() {
       {/* Actions */}
       <div>
         <div className="grid gap-3 sm:grid-cols-2">
-          <Button variant="secondary" onClick={addToCart} disabled={!canOrder} className="min-h-14">
+          <Button
+            variant="secondary"
+            onClick={addToCart}
+            disabled={!canOrder}
+            className="min-h-14"
+          >
             Dodaj u korpu
           </Button>
-          <Button onClick={orderNow} disabled={!canOrder} arrow className="min-h-14">
+          <Button
+            onClick={orderNow}
+            disabled={!canOrder}
+            arrow
+            className="min-h-14"
+          >
             Poruči odmah
           </Button>
         </div>
 
         <p aria-live="polite" className="mt-4 min-h-6 text-sm">
-          {showErrors && customError && <span className="text-[#A4472F]">{customError}</span>}
+          {showErrors && customError && (
+            <span className="text-[#A4472F]">{customError}</span>
+          )}
           {!showErrors && added && (
             <span className="inline-flex items-center gap-2">
-              <Check aria-hidden="true" strokeWidth={2} className="size-4 text-eucalyptus" />
+              <Check
+                aria-hidden="true"
+                strokeWidth={2}
+                className="size-4 text-eucalyptus"
+              />
               Dodato u korpu.
-              <button type="button" onClick={openCart} className="min-h-11 underline underline-offset-4">
+              <button
+                type="button"
+                onClick={openCart}
+                className="min-h-11 underline underline-offset-4"
+              >
                 Otvori korpu
               </button>
             </span>
           )}
           {!canOrder && (
             <span className="text-muted">
-              Cene uskoro objavljujemo. Do tada poručite telefonom: <Text>065 3053662</Text>
+              Cene uskoro objavljujemo. Do tada poručite telefonom:{" "}
+              <Text>065 3053662</Text>
               {isPlaceholder(contact.phone) ? "" : "."}
             </span>
           )}

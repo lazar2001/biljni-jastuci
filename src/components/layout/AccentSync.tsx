@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { getScent } from "@/content/site";
+import { getScent } from "@/content/scents";
 import { useSelection } from "@/store/selection";
 
 /** Mirrors the selected scent's accent color into the global --accent variable. */

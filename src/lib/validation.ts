@@ -1,5 +1,7 @@
 import { z } from "zod";
-import { customScent, customSize, quantity, scents, sizes, type ScentId, type SizeId } from "@/content/site";
+import { customScent, customSize, quantity,  sizes, type SizeId } from "@/content/site";
+import {  scents,  type ScentId } from "@/content/scents";
+
 import { normalizePhone } from "./format";
 
 const required = (label: string) => z.string().trim().min(1, `Unesite ${label}.`);

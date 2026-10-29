@@ -5,12 +5,14 @@ import { AnimatePresence } from "motion/react";
 import * as m from "motion/react-m";
 import { ease } from "@/lib/motion";
 import { ArrowRight } from "lucide-react";
-import { customScent, getScent, orderAnchor, scents, scentsSection, type ScentId } from "@/content/site";
-import { scentIllustrations } from "@/components/illustrations";
+import { getScent, scents, type ScentId } from "@/content/scents";
+import { customScent, orderAnchor, scentsSection } from "@/content/site";
 import { AnchorLink } from "@/components/ui/AnchorLink";
 import { Eyebrow } from "@/components/ui/SectionHeading";
 import { Text } from "@/components/ui/Text";
 import { useSelection } from "@/store/selection";
+
+import Image from "next/image";
 
 export function Scents() {
   const scentId = useSelection((s) => s.scentId);
@@ -85,7 +87,9 @@ export function Scents() {
                     <span className="block font-serif text-[0.9688rem] leading-tight min-[400px]:text-[1.125rem] sm:text-[1.25rem]">
                       {s.name}
                     </span>
-                    <span className="block text-[0.8125rem] leading-snug text-muted">{s.short}</span>
+                    <span className="block text-[0.8125rem] leading-snug text-muted">
+                      {s.short}
+                    </span>
                   </span>
                 </label>
               ))}
@@ -106,11 +110,16 @@ export function Scents() {
                 onChange={(e) => setCustomText(e.target.value)}
                 className="mt-2 h-13 min-h-[52px] w-full rounded-soft border border-charcoal/25 bg-paper px-4 text-base outline-none transition-colors duration-300 placeholder:text-charcoal/40 focus:border-charcoal focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-eucalyptus"
               />
-              <p className="mt-2 text-sm text-muted">{scentsSection.customHint}</p>
+              <p className="mt-2 text-sm text-muted">
+                {scentsSection.customHint}
+              </p>
             </div>
           )}
 
-          <div aria-live="polite" className="mt-10 min-h-[6.5rem] border-t border-charcoal/15 pt-6">
+          <div
+            aria-live="polite"
+            className="mt-10 min-h-[6.5rem] border-t border-charcoal/15 pt-6"
+          >
             <AnimatePresence mode="wait" initial={false}>
               <m.p
                 key={active.id}
@@ -129,7 +138,9 @@ export function Scents() {
             href={orderAnchor}
             className="group mt-4 inline-flex min-h-11 items-center gap-2 border-b border-charcoal/30 text-base transition-colors duration-500 ease-calm hover:border-charcoal"
           >
-            {active.custom ? "Poruči svoju notu" : `Poruči notu ${active.name.toLowerCase()}`}
+            {active.custom
+              ? "Poruči svoju notu"
+              : `Poruči notu ${active.name.toLowerCase()}`}
             <ArrowRight
               aria-hidden="true"
               strokeWidth={1.5}
@@ -138,27 +149,32 @@ export function Scents() {
           </AnchorLink>
         </div>
 
-        {/* Illustration crossfade */}
-        <div className="relative mx-auto aspect-[4/5] w-full max-w-[22rem] lg:col-span-5 lg:col-start-8 lg:max-w-none">
-          {scents.map((s) => {
-            const Illustration = scentIllustrations[s.id];
-            return (
+        <div className="relative mx-auto w-full max-w-[22rem] lg:col-span-5 lg:col-start-8 lg:max-w-none">
+          <div className="relative aspect-[4/5] overflow-hidden rounded-card border border-charcoal/10 bg-paper/50 shadow-[0_24px_60px_-28px_rgba(60,45,30,0.35)]">
+            {scents.map((s) => (
               <div
                 key={s.id}
                 aria-hidden="true"
                 className={clsx(
-                  "absolute inset-0 flex items-center justify-center transition-[opacity,transform] duration-[1200ms] ease-calm",
-                  s.id === scentId ? "scale-100 opacity-100" : "scale-[0.96] opacity-0",
+                  "absolute inset-0 transition-[opacity,transform] duration-[1200ms] ease-calm",
+                  s.id === scentId
+                    ? "scale-100 opacity-100"
+                    : "scale-[1.04] opacity-0",
                 )}
-                style={{ color: s.accent }}
               >
-                <Illustration className="h-full w-full" />
+                <Image
+                  src={s.image}
+                  alt=""
+                  fill
+                  sizes="(min-width: 1024px) 40vw, 22rem"
+                  className="object-cover"
+                />
               </div>
-            );
-          })}
+            ))}
+          </div>
           <p
             aria-hidden="true"
-            className="absolute bottom-0 right-0 font-serif text-[clamp(3rem,2rem+5vw,7.5rem)] italic leading-none text-charcoal/[0.08]"
+            className="mt-4 text-right font-['Georgia',serif] text-[clamp(3rem,2rem+5vw,7rem)] italic leading-none text-charcoal/[0.15]"
           >
             {active.custom ? "Vaša nota" : active.name}
           </p>

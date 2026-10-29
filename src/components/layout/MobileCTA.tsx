@@ -3,7 +3,8 @@
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
-import { customSize, getScent, getSize, orderAnchor, sizesSection } from "@/content/site";
+import { customSize, getSize, orderAnchor, sizesSection } from "@/content/site";
+import {  getScent } from "@/content/scents";
 import { AnchorLink } from "@/components/ui/AnchorLink";
 import { formatRSD } from "@/lib/format";
 import { unitPrice } from "@/lib/pricing";

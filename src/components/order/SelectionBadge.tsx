@@ -1,6 +1,7 @@
 "use client";
 
-import { getScent, getSize } from "@/content/site";
+import {  getSize } from "@/content/site";
+import { getScent,  } from "@/content/scents";
 import { useSelection } from "@/store/selection";
 
 /** Small label over the product image reflecting the current choice. */

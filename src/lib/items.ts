@@ -1,4 +1,5 @@
-import { customScent, customSize, getScent, getSize, type ScentId, type SizeId } from "@/content/site";
+import { customScent, customSize, getSize, type SizeId } from "@/content/site";
+import {  getScent, type ScentId, } from "@/content/scents";
 
 /** One order line. Custom scent / size carry the customer's own text and measurements. */
 export type LineItem = {

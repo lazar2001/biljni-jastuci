@@ -1,4 +1,5 @@
-import { getScent, reviews, reviewsSection } from "@/content/site";
+import { reviews, reviewsSection } from "@/content/site";
+import { getScent,  } from "@/content/scents";
 import { Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 

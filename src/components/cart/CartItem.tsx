@@ -1,7 +1,9 @@
 "use client";
 
 import { X } from "lucide-react";
-import { customSize, getScent, getSize, isPlaceholder } from "@/content/site";
+import { customSize, getSize, isPlaceholder } from "@/content/site";
+import { getScent,  } from "@/content/scents";
+
 import { PillowArt } from "@/components/illustrations";
 import { QuantityStepper } from "@/components/ui/QuantityStepper";
 import { Text } from "@/components/ui/Text";

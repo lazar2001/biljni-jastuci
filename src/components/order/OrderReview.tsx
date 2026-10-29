@@ -1,4 +1,5 @@
-import { customSize, getScent } from "@/content/site";
+import { customSize } from "@/content/site";
+import { getScent } from "@/content/scents";
 import { CartSummary } from "@/components/cart/CartSummary";
 import { formatRSD } from "@/lib/format";
 import { isCustomSize, lineKey, scentLabel, sizeLabel } from "@/lib/items";

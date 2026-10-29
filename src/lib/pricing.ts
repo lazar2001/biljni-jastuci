@@ -1,4 +1,6 @@
-import { scents, shipping, sizes, type SizeId } from "@/content/site";
+import { shipping, sizes, type SizeId } from "@/content/site";
+import { scents } from "@/content/scents";
+
 import { isCustomSize, type LineItem } from "./items";
 
 /**

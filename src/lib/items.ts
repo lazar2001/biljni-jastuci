@@ -30,7 +30,7 @@ export function scentLabel(line: Pick<LineItem, "scentId" | "customScent">): str
 }
 
 export function sizeLabel(line: Pick<LineItem, "sizeId" | "width" | "height">): string {
-  return isCustomSize(line.sizeId) ? `Po meri ${line.width} × ${line.height} cm` : getSize(line.sizeId).name;
+  return isCustomSize(line.sizeId) ? `Po meri ${line.width} × ${line.height} cm` : getSize(line.sizeId).id;
 }
 
 export const lineLabel = (line: LineItem) => `${scentLabel(line)}, ${sizeLabel(line)}`;

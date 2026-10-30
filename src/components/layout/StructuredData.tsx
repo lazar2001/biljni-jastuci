@@ -14,7 +14,7 @@ export function StructuredData() {
     .filter((s) => !s.custom && s.price !== null)
     .map((s) => ({
       "@type": "Offer",
-      name: isPlaceholder(s.dimensionsCm) ? s.name : `${s.name}, ${s.dimensionsCm} cm`,
+      name: isPlaceholder(s.dimensionsCm) ? s.id : `${s.id}, ${s.dimensionsCm} cm`,
       price: s.price,
       priceCurrency: "RSD",
       availability: "https://schema.org/InStock",

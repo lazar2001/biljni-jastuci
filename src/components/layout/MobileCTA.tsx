@@ -57,7 +57,7 @@ export function MobileCTA() {
         <div className="min-w-0">
           <p className="flex items-center gap-2 truncate text-sm">
             <span aria-hidden="true" className="size-2.5 shrink-0 rounded-full" style={{ backgroundColor: scent.accent }} />
-            {scent.custom ? "Vaša nota" : scent.name} · {getSize(sizeId).custom ? "Po meri" : getSize(sizeId).name}
+            {scent.custom ? "Vaša nota" : scent.name} · {getSize(sizeId).custom ? "Po meri" : getSize(sizeId).id}
             {quantity > 1 && ` × ${quantity}`}
           </p>
           <p className="font-semibold tabular-nums">

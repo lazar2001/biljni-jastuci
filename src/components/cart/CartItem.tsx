@@ -39,7 +39,7 @@ export function CartItem({ item }: { item: Item }) {
                 `Po meri · ${item.width} × ${item.height} cm`
               ) : (
                 <>
-                  {size.name} · <Text>{size.dimensionsCm}</Text>
+                  {/* {size.name} · <Text>{size.dimensionsCm}</Text> */}
                   {!isPlaceholder(size.dimensionsCm) && " cm"}
                 </>
               )}

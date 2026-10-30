@@ -187,7 +187,7 @@ export function OrderConfigurator() {
                   {selected && <Check strokeWidth={2.5} className="size-3" />}
                 </span>
                 <span className="flex-1">
-                  <span className="font-semibold">{s.name}</span>
+                  <span className="font-semibold">{s.id}</span>
                   {s.bestseller && (
                     <span className="ml-2 rounded-[5px] bg-citrus/25 px-1.5 py-0.5 text-[0.6875rem] font-semibold">
                       {sizesSection.bestsellerLabel}

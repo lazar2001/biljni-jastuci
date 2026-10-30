@@ -16,7 +16,7 @@ export function SelectionBadge() {
         className="size-3 rounded-full transition-colors duration-700 ease-calm"
         style={{ backgroundColor: scent.accent }}
       />
-      {scent.custom ? "Vaša nota" : scent.name} · {size.custom ? "Po meri" : size.name}
+      { size.id}
     </p>
   );
 }

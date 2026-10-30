@@ -5,20 +5,16 @@ import { ScentId } from "./scents";
 export const PLACEHOLDER_PREFIX = "[POPUNITI";
 export const fill = (what: string) => `[POPUNITI: ${what}]`;
 export const isPlaceholder = (value: unknown): boolean =>
-  value === null || (typeof value === "string" && value.startsWith(PLACEHOLDER_PREFIX));
+  value === null ||
+  (typeof value === "string" && value.startsWith(PLACEHOLDER_PREFIX));
 
 /* ------------------------------------------------------------------ */
 /* Types                                                               */
 /* ------------------------------------------------------------------ */
 
-
-export type SizeId = "small" | "medium" | "large" | "custom";
-
-
-
+export type SizeId = "40x40" | "40x50" | "50x50" | "40x60" | "50x70";
 export type Size = {
   id: SizeId;
-  name: string;
   dimensionsCm: string;
   /** Width/height in cm, used to draw the silhouette to scale. null until known. */
   widthCm: number | null;
@@ -40,9 +36,18 @@ export type Review = {
   isReal: boolean;
 };
 
-export type FaqItem = { question: string; answer: string; link?: { label: string; href: string } };
+export type FaqItem = {
+  question: string;
+  answer: string;
+  link?: { label: string; href: string };
+};
 
-export type Ingredient = { name: string; latin: string; note: string; image?: string };
+export type Ingredient = {
+  name: string;
+  latin: string;
+  note: string;
+  image?: string;
+};
 
 export type GalleryImage = { src: string; alt: string; tone: string };
 
@@ -89,13 +94,16 @@ export const hero = {
     src: "/images/hero/hero.jpg",
     alt: "Laneno sivi pravougaoni biljni jastuk na krevetu, obasjan mekim dnevnim svetlom",
   },
-  images:[{
-    src: "/assets/eukaliptus.png",
-    alt: "Laneno sivi pravougaoni biljni jastuk na krevetu, obasjan mekim dnevnim svetlom",
-  },{
-    src: "/assets/kamilica.jpg",
-    alt: "Laneno sivi pravougaoni biljni jastuk na krevetu, obasjan mekim dnevnim svetlom",
-  }]
+  images: [
+    {
+      src: "/assets/eukaliptus.png",
+      alt: "Laneno sivi pravougaoni biljni jastuk na krevetu, obasjan mekim dnevnim svetlom",
+    },
+    {
+      src: "/assets/kamilica.jpg",
+      alt: "Laneno sivi pravougaoni biljni jastuk na krevetu, obasjan mekim dnevnim svetlom",
+    },
+  ],
 };
 
 /* ------------------------------------------------------------------ */
@@ -105,12 +113,16 @@ export const hero = {
 export const about = {
   eyebrow: "O proizvodu",
   title: "Jastuk *punjen biljem*, ne veštačkim mirisom.",
-  what:
-    "Biljni jastuk je jastučnica punjena sušenim aromatičnim biljem. Stoji u prostoru i nenametljivo ispušta prirodni miris, bez sprejeva, sveća i struje.",
+  what: "Biljni jastuk je jastučnica punjena sušenim aromatičnim biljem. Stoji u prostoru i nenametljivo ispušta prirodni miris, bez sprejeva, sveća i struje.",
   purpose:
     "Tu je da osveži prostor prirodnim mirisom i stvori prijatniju, mirniju atmosferu za odmor.",
   usesTitle: "Gde ga ljudi drže",
-  uses: ["Spavaća soba", "Dnevni boravak", "Dečija soba", "Bašte kafića i ugostiteljski prostori"],
+  uses: [
+    "Spavaća soba",
+    "Dnevni boravak",
+    "Dečija soba",
+    "Bašte kafića i ugostiteljski prostori",
+  ],
 };
 
 /* ------------------------------------------------------------------ */
@@ -119,18 +131,65 @@ export const about = {
 
 export const benefits = {
   eyebrow: "Zašto biljni jastuk",
-  quote: "Luksuz je kada prostor *tiho miriše* na nešto stvarno.",
+  quote: "PREDNOSTI BILJNOG JASTUKA",
   items: [
-    { title: "Prirodne arome", text: "Bez veštačkih mirisa i osveživača. Miris dolazi iz samog bilja." },
-    {
-      title: "Osećaj opuštanja",
-      text: "Blag miris koji prostor čini mirnijim i prijatnijim za odmor.",
-    },
-    {
-      title: "Prijatnija atmosfera",
-      text: "Prirodna alternativa sprejevima i mirisnim svećama.",
-    },
-  ],
+  {
+    icon: "/assets/ikonice/Prirodni Inhalator.png",
+    text: "SLUŽI KAO PRIRODNI INHALATOR",
+  },
+  {
+    icon: "/assets/ikonice/Prirodne arome.png",
+    text: "PRUŽA PRIRODNE AROME",
+  },
+  {
+    icon: "/assets/ikonice/Prijatnija atmosfera.png",
+    text: "STVARA PRIJATNIJU ATMOSFERU",
+  },
+  {
+    icon: "/assets/ikonice/Osvezenje prostora.png",
+    text: "OSVEŽAVA PROSTOR",
+  },
+  {
+    icon: "/assets/ikonice/kvalitetniji san.png",
+    text: "ZA PRIJATNIJU RUTINU PRED SPAVANJE I KVALITETNIJI SAN",
+  },
+  {
+    icon: "/assets/ikonice/Manje stresa.png",
+    text: "ZA PREDAH OD SVAKODNEVNOG STRESA",
+  },
+  {
+    icon: "/assets/ikonice/Osecaj opustanja.png",
+    text: "ZA TRENUTKE OPUŠTANJA",
+  },
+  {
+    icon: "/assets/ikonice/Bronhitis.png",
+    text: "POMAŽE KOD BRONHITISA",
+  },
+  {
+    icon: "/assets/ikonice/Astma.png",
+    text: "POMAŽE KOD ASTME",
+  },
+  {
+    icon: "/assets/ikonice/Alergija.png",
+    text: "POMAŽE KOD ALERGIJA NA AMBROZIJU",
+  },
+  {
+    icon: "/assets/ikonice/Grip.png",
+    text: "POMAŽE KOD GRIPA",
+  },
+  {
+    icon: "/assets/ikonice/Kasalj.png",
+    text: "POMAŽE KOD KAŠALJA",
+  },
+  {
+    icon: "/assets/ikonice/Lucenje sluzi.png",
+    text: "POMAŽE KOD POJAČANOG LUČENJA SLUZI",
+  },
+  {
+    icon: "/assets/ikonice/Imunitet.png",
+    text: "ZA JAČI IMUNITET",
+  },
+]
 };
 
 /* ------------------------------------------------------------------ */
@@ -152,7 +211,6 @@ export const ingredients = {
 
 // Descriptions are suggestions describing mood only — no health claims. Edit freely.
 
-
 /** Text field shown when the customer picks "Izaberite vašu". */
 export const customScent = {
   label: "Koju mirisnu notu želite?",
@@ -164,49 +222,55 @@ export const customScent = {
 export const scentsSection = {
   eyebrow: "Mirisne note",
   title: "Izaberite *miris* svog prostora.",
-  customHint: "Upišite željenu notu. Pre slanja vas zovemo da je zajedno potvrdimo.",
+  customHint:
+    "Upišite željenu notu. Pre slanja vas zovemo da je zajedno potvrdimo.",
 };
-
-
 
 /* ------------------------------------------------------------------ */
 /* Sizes and pricing                                                   */
 /* ------------------------------------------------------------------ */
 
+// 40 x 40 cm = 3000 rsd
+// 40 x 50 cm = 4000 rsd
+// 50 x 50 cm = 5000 rsd
+// 40 x 60 cm = 5000 rsd 
+// 50 x 70 cm = 6000 rsd
 export const sizes: Size[] = [
   {
-    id: "small",
-    name: "Mala",
+    id: "40x40",
     dimensionsCm: fill("dimenzije, npr. 30 × 20"),
     widthCm: null,
     heightCm: null,
-    price: null,
+    price: 2999,
   },
   {
-    id: "medium",
-    name: "Srednja",
+    id: "40x50",
     dimensionsCm: fill("dimenzije, npr. 40 × 30"),
     widthCm: null,
     heightCm: null,
-    price: null,
+    price: 3999,
     bestseller: true,
   },
   {
-    id: "large",
-    name: "Velika",
+    id: "50x50",
     dimensionsCm: fill("dimenzije, npr. 50 × 35"),
     widthCm: null,
     heightCm: null,
-    price: null,
+    price: 4999,
   },
   {
-    id: "custom",
-    name: "Po vašoj meri",
+    id: "40x60",
+    dimensionsCm: fill("dimenzije, npr. 50 × 35"),
+    widthCm: null,
+    heightCm: null,
+    price: 5999,
+  },
+  {
+    id: "50x70",
     dimensionsCm: "Unesite širinu i visinu",
     widthCm: null,
     heightCm: null,
-    price: null,
-    custom: true,
+    price: 6999
   },
 ];
 
@@ -220,12 +284,12 @@ export const customSize = {
 
 export const sizesSection = {
   eyebrow: "Dimenzije",
-  title: "Tri veličine ili *po vašoj meri*.",
+  title: "Dostupne veličine",
   bestsellerLabel: "Najprodavanije",
   noPriceLabel: "Cena uskoro",
 };
 
-export const defaultSizeId: SizeId = "medium";
+export const defaultSizeId: SizeId = "40x50";
 
 export const quantity = { min: 1, max: 20 };
 
@@ -253,16 +317,56 @@ export const gallery = {
   eyebrow: "Galerija",
   title: "Iz blizine i *u prostoru*.",
   images: [
-    { src: "/images/gallery/gallery-01.jpg", alt: "Biljni jastuk na lanenoj posteljini u spavaćoj sobi", tone: "#CFC8BC" },
-    { src: "/images/gallery/gallery-02.jpg", alt: "Detalj lanenog platna i ravnog ruba jastuka", tone: "#BDB6AB" },
-    { src: "/images/gallery/gallery-03.jpg", alt: "Sušeno bilje kojim se puni jastuk", tone: "#A9AF9F" },
-    { src: "/images/gallery/gallery-04.jpg", alt: "Jastuk na kauču u dnevnom boravku", tone: "#D6CFC3" },
-    { src: "/images/gallery/gallery-05.jpg", alt: "Detalj ručnih šavova na jastučnici", tone: "#B4AEA4" },
-    { src: "/images/gallery/gallery-06.jpg", alt: "Jastuk u dečijoj sobi", tone: "#DCD5CA" },
-    { src: "/images/gallery/gallery-07.jpg", alt: "Jastuk na stolici u bašti kafića", tone: "#9FAA9A" },
-    { src: "/images/gallery/gallery-08.jpg", alt: "Ruke koje pune jastuk biljem", tone: "#C3BCB0" },
-    { src: "/images/gallery/gallery-09.jpg", alt: "Tri dimenzije jastuka jedna pored druge", tone: "#CAC4B9" },
-    { src: "/images/gallery/gallery-10.jpg", alt: "Jastuk na fotelji pored prozora", tone: "#B0B8B2" },
+    {
+      src: "/images/gallery/gallery-01.jpg",
+      alt: "Biljni jastuk na lanenoj posteljini u spavaćoj sobi",
+      tone: "#CFC8BC",
+    },
+    {
+      src: "/images/gallery/gallery-02.jpg",
+      alt: "Detalj lanenog platna i ravnog ruba jastuka",
+      tone: "#BDB6AB",
+    },
+    {
+      src: "/images/gallery/gallery-03.jpg",
+      alt: "Sušeno bilje kojim se puni jastuk",
+      tone: "#A9AF9F",
+    },
+    {
+      src: "/images/gallery/gallery-04.jpg",
+      alt: "Jastuk na kauču u dnevnom boravku",
+      tone: "#D6CFC3",
+    },
+    {
+      src: "/images/gallery/gallery-05.jpg",
+      alt: "Detalj ručnih šavova na jastučnici",
+      tone: "#B4AEA4",
+    },
+    {
+      src: "/images/gallery/gallery-06.jpg",
+      alt: "Jastuk u dečijoj sobi",
+      tone: "#DCD5CA",
+    },
+    {
+      src: "/images/gallery/gallery-07.jpg",
+      alt: "Jastuk na stolici u bašti kafića",
+      tone: "#9FAA9A",
+    },
+    {
+      src: "/images/gallery/gallery-08.jpg",
+      alt: "Ruke koje pune jastuk biljem",
+      tone: "#C3BCB0",
+    },
+    {
+      src: "/images/gallery/gallery-09.jpg",
+      alt: "Tri dimenzije jastuka jedna pored druge",
+      tone: "#CAC4B9",
+    },
+    {
+      src: "/images/gallery/gallery-10.jpg",
+      alt: "Jastuk na fotelji pored prozora",
+      tone: "#B0B8B2",
+    },
   ] satisfies GalleryImage[],
 };
 
@@ -277,9 +381,27 @@ export const reviewsSection = {
 
 export const reviews: Review[] = [
   // PLACEHOLDER — zameniti stvarnim recenzijama. Ne prikazuju se u produkciji dok je isReal: false.
-  { name: "Primer K.", city: "Beograd", scentId: "fresh", text: "PLACEHOLDER — zameniti stvarnom recenzijom.", isReal: false },
-  { name: "Primer M.", city: "Novi Sad", scentId: "sea", text: "PLACEHOLDER — zameniti stvarnom recenzijom.", isReal: false },
-  { name: "Primer J.", city: "Niš", scentId: "summer", text: "PLACEHOLDER — zameniti stvarnom recenzijom.", isReal: false },
+  {
+    name: "Primer K.",
+    city: "Beograd",
+    scentId: "fresh",
+    text: "PLACEHOLDER — zameniti stvarnom recenzijom.",
+    isReal: false,
+  },
+  {
+    name: "Primer M.",
+    city: "Novi Sad",
+    scentId: "sea",
+    text: "PLACEHOLDER — zameniti stvarnom recenzijom.",
+    isReal: false,
+  },
+  {
+    name: "Primer J.",
+    city: "Niš",
+    scentId: "summer",
+    text: "PLACEHOLDER — zameniti stvarnom recenzijom.",
+    isReal: false,
+  },
 ];
 
 /* ------------------------------------------------------------------ */
@@ -297,16 +419,23 @@ export const faq: FaqItem[] = [
     answer:
       "Postavite ga tamo gde provodite vreme: uz krevet, na fotelju, kauč ili u baštu. Kada poželite jači miris, lagano ga protresite ili pritisnite.",
   },
-  { question: "Koliko dugo traje miris?", answer: fill("koliko meseci miris traje uz normalnu upotrebu") },
+  {
+    question: "Koliko dugo traje miris?",
+    answer: fill("koliko meseci miris traje uz normalnu upotrebu"),
+  },
   {
     question: "Kako da osvežim miris kada oslabi?",
     answer: `Protresite i pritisnite jastuk nekoliko puta, da se bilje unutra pomeri. ${fill("da li nudite dopunu bilja ili ulje za osvežavanje")}`,
   },
   {
     question: "Kako se jastuk čuva?",
-    answer: "Na suvom mestu, dalje od vlage i dugog direktnog sunca, koje brže troši miris bilja.",
+    answer:
+      "Na suvom mestu, dalje od vlage i dugog direktnog sunca, koje brže troši miris bilja.",
   },
-  { question: "Da li jastuk sme da se pere?", answer: fill("uputstvo za održavanje i pranje jastučnice") },
+  {
+    question: "Da li jastuk sme da se pere?",
+    answer: fill("uputstvo za održavanje i pranje jastučnice"),
+  },
   {
     question: "Da li je pogodan za dečiju sobu?",
     answer:
@@ -342,7 +471,10 @@ export const contact = {
   /** International format without + or spaces, used for deep links, e.g. 381641234567 */
   phoneIntl: fill("telefon u formatu 3816..."),
   email: fill("email za kontakt"),
-  instagram: { handle: fill("@instagram"), url: fill("https://instagram.com/...") },
+  instagram: {
+    handle: fill("@instagram"),
+    url: fill("https://instagram.com/..."),
+  },
   hours: fill("radno vreme za pozive, npr. radnim danima 9–18h"),
 };
 
@@ -371,7 +503,12 @@ export const legalLinks = [
 
 export type LegalBlock = string | { list: string[] };
 export type LegalSection = { heading: string; body: LegalBlock[] };
-export type LegalDoc = { title: string; description: string; updated: string; sections: LegalSection[] };
+export type LegalDoc = {
+  title: string;
+  description: string;
+  updated: string;
+  sections: LegalSection[];
+};
 
 const sellerLine = `${seller.name}, ${seller.address}, PIB ${seller.pib}, matični broj ${seller.mb}`;
 const vatLine =
@@ -383,14 +520,17 @@ const vatLine =
 const shippingLine =
   shipping.price !== null
     ? `Cena dostave je ${shipping.price.toLocaleString("sr-RS")} RSD${
-        shipping.freeAbove !== null ? `, a za porudžbine iznad ${shipping.freeAbove.toLocaleString("sr-RS")} RSD dostava je besplatna` : ""
+        shipping.freeAbove !== null
+          ? `, a za porudžbine iznad ${shipping.freeAbove.toLocaleString("sr-RS")} RSD dostava je besplatna`
+          : ""
       }.`
     : `Cena dostave: ${fill("cena dostave i prag za besplatnu dostavu")}.`;
 
 export const legal: Record<"terms" | "returns" | "privacy", LegalDoc> = {
   terms: {
     title: "Uslovi kupovine",
-    description: "Uslovi kupovine biljnih jastuka putem internet prodavnice: prodavac, poručivanje, cene, plaćanje i dostava.",
+    description:
+      "Uslovi kupovine biljnih jastuka putem internet prodavnice: prodavac, poručivanje, cene, plaćanje i dostava.",
     updated: fill("datum poslednje izmene"),
     sections: [
       {
@@ -438,7 +578,9 @@ export const legal: Record<"terms" | "returns" | "privacy", LegalDoc> = {
       },
       {
         heading: "Zaštita podataka",
-        body: ["Podatke koje unesete koristimo isključivo za obradu i isporuku porudžbine, kako je opisano u Politici privatnosti."],
+        body: [
+          "Podatke koje unesete koristimo isključivo za obradu i isporuku porudžbine, kako je opisano u Politici privatnosti.",
+        ],
       },
       {
         heading: "Rešavanje sporova",
@@ -451,7 +593,8 @@ export const legal: Record<"terms" | "returns" | "privacy", LegalDoc> = {
 
   returns: {
     title: "Reklamacije i povraćaj",
-    description: "Pravo na odustanak u roku od 14 dana, postupak reklamacije, rokovi i obrazac za odustanak od ugovora.",
+    description:
+      "Pravo na odustanak u roku od 14 dana, postupak reklamacije, rokovi i obrazac za odustanak od ugovora.",
     updated: fill("datum poslednje izmene"),
     sections: [
       {
@@ -480,19 +623,24 @@ export const legal: Record<"terms" | "returns" | "privacy", LegalDoc> = {
       },
       {
         heading: "Kontakt za reklamacije",
-        body: [`${sellerLine}. Email: ${seller.email}, telefon: ${seller.phone}.`],
+        body: [
+          `${sellerLine}. Email: ${seller.email}, telefon: ${seller.phone}.`,
+        ],
       },
     ],
   },
 
   privacy: {
     title: "Politika privatnosti",
-    description: "Koje podatke prikupljamo, u koju svrhu, koliko ih čuvamo i koja su vaša prava po Zakonu o zaštiti podataka o ličnosti.",
+    description:
+      "Koje podatke prikupljamo, u koju svrhu, koliko ih čuvamo i koja su vaša prava po Zakonu o zaštiti podataka o ličnosti.",
     updated: fill("datum poslednje izmene"),
     sections: [
       {
         heading: "Rukovalac podacima",
-        body: [`Rukovalac podacima o ličnosti je ${sellerLine}. Kontakt: ${seller.email}, ${seller.phone}.`],
+        body: [
+          `Rukovalac podacima o ličnosti je ${sellerLine}. Kontakt: ${seller.email}, ${seller.phone}.`,
+        ],
       },
       {
         heading: "Koje podatke prikupljamo",
@@ -521,7 +669,9 @@ export const legal: Record<"terms" | "returns" | "privacy", LegalDoc> = {
             list: [
               `Kurirska služba (${shipping.courier}), radi isporuke paketa.`,
               "Pružalac usluge slanja emaila (Resend) i pružalac hostinga sajta (Vercel). Ovi pružaoci mogu obrađivati podatke van Republike Srbije, uz odgovarajuće mere zaštite.",
-              fill("ako koristite Google Sheets ili Telegram za prijem porudžbina, navedite ih ovde"),
+              fill(
+                "ako koristite Google Sheets ili Telegram za prijem porudžbina, navedite ih ovde",
+              ),
             ],
           },
         ],
@@ -592,4 +742,5 @@ export const analytics = {
 /* ------------------------------------------------------------------ */
 
 export const hasRealReviews = reviews.some((r) => r.isReal);
-export const getSize = (id: SizeId) => sizes.find((s) => s.id === id) ?? sizes[0];
+export const getSize = (id: SizeId) =>
+  sizes.find((s) => s.id === id) ?? sizes[0];

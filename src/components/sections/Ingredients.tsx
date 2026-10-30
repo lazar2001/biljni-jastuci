@@ -23,9 +23,9 @@ export function Ingredients() {
             title={ingredients.title}
             className="lg:col-span-7"
           />
-          <p className="measure text-lead text-muted lg:col-span-4 lg:col-start-9">
+          {/* <p className="measure text-lead text-muted lg:col-span-4 lg:col-start-9">
             {ingredients.intro}
-          </p>
+          </p> */}
         </div>
       </div>
 
@@ -86,14 +86,14 @@ export function Ingredients() {
         </ScrollRail>
       </div>
 
-      <div className="container-site">
+      {/* <div className="container-site">
         <p className="mt-16 flex flex-col gap-2 border-t border-line pt-6 sm:flex-row sm:gap-6">
           <span className="eyebrow pt-1">Jastučnica</span>
           <span>
             <Text>{ingredients.fabricNote}</Text>
           </span>
         </p>
-      </div>
+      </div> */}
     </section>
   );
 }

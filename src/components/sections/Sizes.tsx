@@ -32,11 +32,11 @@ export function Sizes() {
   return (
     <section id="velicine" aria-labelledby="sizes-title" className="section-y bg-linen">
       <div className="container-site">
-        <SectionHeading id="sizes-title" eyebrow={sizesSection.eyebrow} title={sizesSection.title} />
+        <SectionHeading id="sizes-title"  title={sizesSection.title} />
 
         <fieldset className="mt-14 lg:mt-20">
           <legend className="sr-only">Izaberite dimenziju</legend>
-          <Stagger stagger={0.12} className="grid gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-4">
+          <Stagger stagger={0.12} className="grid gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-5">
             {sizes.map((size, i) => {
               const { scale, ratio } = silhouette(i);
               const selected = size.id === sizeId;
@@ -70,32 +70,23 @@ export function Sizes() {
                       ratio={ratio}
                       className={clsx(
                         "transition-colors duration-700 ease-calm",
-                        selected ? "text-accent" : "text-stone",
-                        size.custom && "[&_rect]:[stroke-dasharray:6_6]",
+                        selected ? "text-accent" : "text-stone"
                       )}
-                      style={{ width: `${(size.custom ? 0.9 : scale) * 100}%`, maxHeight: "100%" }}
+                      style={{ width: `${(scale) * 100}%`, maxHeight: "100%" }}
                     />
                   </div>
 
-                  <div className="mt-5 flex items-end justify-between gap-4 border-t border-line pt-5 md:mt-8">
+                  <div className="mt-5 flex items-end justify-center gap-4 border-t border-line pt-5 md:mt-8">
                     <div>
-                      <p className="font-serif text-h3">{size.name}</p>
-                      <p className="mt-1 text-sm text-muted">
-                        <Text>{size.dimensionsCm}</Text>
+                      <p className="font-serif text-h3">{size.id}</p>
+                      {/* <p className="mt-1 text-sm text-muted">
+                        <Text>{size.id}</Text>
                         {!size.custom && !isPlaceholder(size.dimensionsCm) && " cm"}
-                      </p>
+                      </p> */}
                     </div>
-                    <p className="text-right font-semibold tabular-nums">
-                      {size.custom ? (
-                        <span className="text-sm font-normal text-muted">{customSize.priceLabel}</span>
-                      ) : size.price !== null ? (
-                        formatRSD(size.price)
-                      ) : (
-                        <span className="text-sm font-normal text-muted">
-                          {isDev ? <Text>{fill("cena u RSD")}</Text> : sizesSection.noPriceLabel}
-                        </span>
-                      )}
-                    </p>
+                    {/* <p className="text-right font-semibold tabular-nums">
+                      {size.price + "RSD"}
+                    </p> */}
                   </div>
                 </label>
                 </StaggerItem>
@@ -104,11 +95,11 @@ export function Sizes() {
           </Stagger>
         </fieldset>
 
-        {sizes.find((s) => s.id === sizeId)?.custom && (
+        {/* {sizes.find((s) => s.id === sizeId)?.custom && (
           <div className="mt-8 max-w-md">
             <CustomSizeFields />
           </div>
-        )}
+        )} */}
       </div>
     </section>
   );

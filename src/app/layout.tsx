@@ -9,7 +9,7 @@ import { MobileCTA } from "@/components/layout/MobileCTA";
 import { MotionProvider } from "@/components/layout/MotionProvider";
 import { CookieConsent } from "@/components/layout/CookieConsent";
 import { CartDrawer } from "@/components/cart/CartDrawer";
-import { Fraunces,Manrope, Cormorant_Garamond } from "next/font/google";
+import { Fraunces, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -25,11 +25,11 @@ const fraunces = Fraunces({
   display: "optional",
 });
 
-const manrope = Manrope({
-  subsets: ["latin", "latin-ext"],
-  variable: "--font-manrope",
-  display: "swap",
-});
+// const manrope = Manrope({
+//   subsets: ["latin", "latin-ext"],
+//   variable: "--font-manrope",
+//   display: "swap",
+// });
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin", "latin-ext"],
@@ -69,7 +69,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="sr-Latn" className={`${fraunces.variable} ${manrope.variable} ${cormorant.variable}` }>
+    <html lang="sr-Latn" className={`${fraunces.variable}  ${cormorant.variable}` }>
       <body>
         <a
           href="#sadrzaj"

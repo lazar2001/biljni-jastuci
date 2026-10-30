@@ -1,5 +1,5 @@
 import type { SVGProps } from "react";
-import type { ScentId } from "@/content/site";
+import type { ScentId } from "@/content/scents";
 
 // Hand-drawn style line illustrations. They inherit color from `currentColor`.
 

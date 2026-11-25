@@ -1,7 +1,7 @@
 /* Koncept: herbarijum na lanenom papiru. Levo poravnate kolone, konfigurator kao radni sto,
    veličine jastuka nacrtane u razmeri (cm), svaka mirisna nota nosi sopstveni par boja. */
 :root{
-  --paper:#E5E7DF;--paper-2:#F0F1EB;--paper-3:#D7DBCF;
+  --paper:#FFFFFF;--paper-2:#F0F1EB;--paper-3:#D7DBCF;
   --ink:#1C291D;--ink-2:#4A5848;--line:#C0C6B5;
   --moss:#34572F;--on-moss:#F0F1EB;--pollen:#8F6B0E;--err:#9E2F1C;
   --weave:rgba(28,41,29,.035);--scrim:rgba(17,23,18,.45);
@@ -24,8 +24,7 @@
 
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{margin:0;background-color:var(--paper);color:var(--ink);font:400 16px/1.6 var(--body);
-  background-image:repeating-linear-gradient(0deg,var(--weave) 0 1px,transparent 1px 3px),repeating-linear-gradient(90deg,var(--weave) 0 1px,transparent 1px 4px)}
+body{margin:0;background-color:var(--paper);color:var(--ink);font:400 16px/1.6 var(--body)}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--paper)}
 [hidden]{display:none!important}
 img,svg{max-width:100%}
@@ -95,9 +94,7 @@ p{margin:0}
 .rise{animation:rise 1s cubic-bezier(.2,.7,.2,1) both}
 .d1{animation-delay:.08s}.d2{animation-delay:.18s}.d3{animation-delay:.28s}.d4{animation-delay:.38s}
 @keyframes rise{from{opacity:.2;transform:translateY(18px)}}
-.leaf{position:absolute;z-index:0;width:var(--s,28px);height:var(--s,28px);color:var(--moss);opacity:.4;pointer-events:none;translate:0 calc(var(--sy,0) * var(--p,.15) * -1px);animation:drift var(--t,18s) ease-in-out infinite alternate}
-@keyframes drift{from{transform:translate(0,0) rotate(-10deg)}to{transform:translate(var(--dx,40px),var(--dy,30px)) rotate(16deg)}}
-@media (max-width:860px){.hero .wrap{grid-template-columns:1fr}.hero-art{max-width:440px}.leaf{opacity:.2}}
+@media (max-width:860px){.hero .wrap{grid-template-columns:1fr}.hero-art{max-width:440px}}
 @media (max-width:520px){.facts dt{font-size:32px}.facts dd{font-size:13px}}
 
 /* jastuk (SVG) */

@@ -8,19 +8,8 @@
   --shadow:0 22px 44px -26px rgba(28,41,29,.55);
   --display:"Castoro","Iowan Old Style","Palatino Linotype",Georgia,serif;
   --body:"Commissioner","Segoe UI",system-ui,-apple-system,sans-serif;
+  color-scheme:light;
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --paper:#111712;--paper-2:#18201A;--paper-3:#0C110D;
-  --ink:#E3E7DA;--ink-2:#A6B09E;--line:#2D392E;
-  --moss:#A3C68F;--on-moss:#112011;--pollen:#E0BC4C;--err:#F0907A;
-  --weave:rgba(227,231,218,.025);--scrim:rgba(0,0,0,.62);
-  --shadow:0 22px 44px -26px rgba(0,0,0,.9);color-scheme:dark}}
-:root[data-theme="dark"]{
-  --paper:#111712;--paper-2:#18201A;--paper-3:#0C110D;
-  --ink:#E3E7DA;--ink-2:#A6B09E;--line:#2D392E;
-  --moss:#A3C68F;--on-moss:#112011;--pollen:#E0BC4C;--err:#F0907A;
-  --weave:rgba(227,231,218,.025);--scrim:rgba(0,0,0,.62);
-  --shadow:0 22px 44px -26px rgba(0,0,0,.9);color-scheme:dark}
 
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
